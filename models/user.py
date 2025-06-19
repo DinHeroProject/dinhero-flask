@@ -21,6 +21,20 @@ class User:
             "content_complexity_preference": None,
             "video_length_preference": None
         }
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "cpf": self.cpf,
+            "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
+            "last_login": self.last_login,
+            "profile": self.profile
+        }
+
 
 # class Aluno(User):
 #     def __init__(self, id, cpf, email, password, first_name, last_name, created_at, updated_at, last_login):
