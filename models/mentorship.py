@@ -1,5 +1,5 @@
 class Mentorship:
-    def __init__(self, id, mentor_id, aluno_id, start_time, end_time, status, topic, meet_type, notes, created_at, updated_at, aluno_feedback, mentor_feedback):
+    def __init__(self, id, mentor_id, aluno_id, start_time, end_time, status, topic, meet_type, notes, aluno_feedback, mentor_feedback):
         self.id = id
         self.mentor_id = mentor_id
         self.aluno_id = aluno_id

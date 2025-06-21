@@ -1,5 +1,5 @@
 class Course:
-    def __init__(self, id, title, description, category, created_at, updated_at, author_id, difficulty_level, estimated_duration_minutes, thumbnail_url, is_private, price, language, number_of_modules, rating, reviews):
+    def __init__(self, id, title, description, category, created_at, updated_at, author_id, difficulty_level, estimated_duration_minutes, thumbnail_url, is_private, language, number_of_modules, rating, reviews):
         self.id = id
         self.title = title
         self.description = description

@@ -1,12 +1,14 @@
+import datetime
+
 class User:
-    def __init__(self, id, cpf, email, password, first_name, last_name, created_at, updated_at, last_login):
+    def __init__(self, id, cpf, email, password, first_name, last_name):
         self.id = id
         self.cpf = cpf
         self.email = email
         self.password = password
-        self.created_at = created_at
-        self.updated_at = updated_at
-        self.last_login = last_login
+        self.created_at = datetime.datetime.now().isoformat()
+        self.updated_at = datetime.datetime.now().isoformat()
+        self.last_login = datetime.datetime.now().isoformat()
         self.first_name = first_name
         self.last_name = last_name
 
