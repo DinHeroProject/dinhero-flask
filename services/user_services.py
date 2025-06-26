@@ -67,13 +67,22 @@ def get_user_by_id(user_id):
 
 def update_user_info(user_id, data):
     for user in users:
+        if user.id != user_id:
+            if user.cpf == data.get('cpf'):
+                return None, "CPF_ALREADY_EXISTS"
+            if user.email == data.get('email'):
+                return None, "EMAIL_ALREADY_EXISTS"
+    for user in users:
         if user.id == user_id:
-            if 'cpf' in data and not validate_cpf(data['cpf']):
-                return None, "INVALID_CPF"
-            if 'email' in data and ('@' not in data['email'] or '.' not in data['email']):
-                return None, "INVALID_EMAIL"
-            if 'password' in data and len(data['password']) < 6:
+            if not data:
+                return None, "MISSING_REQUIRED_FIELD"
+            if len(data.get('password', '')) < 6:
                 return None, "INVALID_PASSWORD"
+            if '@' not in data.get('email', '') or '.' not in data.get('email', ''):
+                return None, "INVALID_EMAIL"
+            if not validate_cpf(data.get('cpf', '')):
+                return None, "INVALID_CPF"
+            
             
             user.cpf = data.get('cpf', user.cpf) 
             user.email = data.get('email', user.email)
