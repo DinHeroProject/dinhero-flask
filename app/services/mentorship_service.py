@@ -1,4 +1,4 @@
-from models.mentorship import Mentorship
+from ..models.mentorship import Mentorship
 import datetime
 
 mentorships = []
