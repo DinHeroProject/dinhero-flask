@@ -17,7 +17,7 @@ from app.routes.course_routes import course_routes
 from app.routes.mentorship_routes import mentorship_routes
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])
+CORS(app)
 
 app.register_blueprint(user_routes)
 app.register_blueprint(course_routes)
@@ -25,4 +25,4 @@ app.register_blueprint(mentorship_routes)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv('PORT', 3333))
+    app.run(debug=True, host="0.0.0.0", port=os.getenv('PORT', 3333))
