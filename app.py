@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os 
 
@@ -16,6 +17,7 @@ from app.routes.course_routes import course_routes
 from app.routes.mentorship_routes import mentorship_routes
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:5173"])
 
 app.register_blueprint(user_routes)
 app.register_blueprint(course_routes)

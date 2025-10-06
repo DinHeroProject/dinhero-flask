@@ -71,3 +71,10 @@ Pull requests são bem-vindos! Para grandes mudanças, abra uma issue primeiro p
 
 ## Licença
 Este projeto está sob a licença MIT.
+
+
+
+
+
+
+
