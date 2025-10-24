@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 from app.services.mentorship_service import *
 from app.utils.errors import errors
 
 mentorship_routes = Blueprint('mentorship_routes', __name__)
 
 @mentorship_routes.route('/mentorships', methods=['POST'])
+@jwt_required()
 def create():
     data = request.json
     mentorship, error = create_mentorship(data)
@@ -13,6 +15,7 @@ def create():
     return jsonify(mentorship), 201
 
 @mentorship_routes.route('/mentorships/<int:mentorship_id>', methods=['GET'])
+@jwt_required()
 def get_by_id(mentorship_id):
     mentorship, error = get_mentorship_by_id(mentorship_id)
     if error:
@@ -22,6 +25,7 @@ def get_by_id(mentorship_id):
     return jsonify(mentorship.to_dict()), 200
 
 @mentorship_routes.route('/mentorships', methods=['GET'])
+@jwt_required()
 def get_all():
     mentorships, error = get_all_mentorships()
     if error:
@@ -31,6 +35,7 @@ def get_all():
     return jsonify(mentorships), 200
 
 @mentorship_routes.route('/mentorships/<int:mentorship_id>', methods=['PUT'])
+@jwt_required()
 def update(mentorship_id):
     data = request.json
     mentorship, error = update_mentorship(mentorship_id, data)
@@ -41,6 +46,7 @@ def update(mentorship_id):
     return jsonify(mentorship), 200
 
 @mentorship_routes.route('/mentorships/<int:mentorship_id>', methods=['DELETE'])
+@jwt_required()
 def delete(mentorship_id):
     mentorship, error = delete_mentorship(mentorship_id)
     if error:
@@ -50,6 +56,7 @@ def delete(mentorship_id):
     return jsonify(mentorship), 200
 
 @mentorship_routes.route('/mentorships/mentor/<int:mentor_id>', methods=['GET'])
+@jwt_required()
 def get_by_mentor(mentor_id):
     mentorships, erro = get_mentorships_by_mentor(mentor_id)
     if erro:
@@ -59,6 +66,7 @@ def get_by_mentor(mentor_id):
     return jsonify(mentorships), 200
 
 @mentorship_routes.route('/mentorships/aluno/<int:aluno_id>', methods=['GET'])
+@jwt_required()
 def get_by_aluno(aluno_id):
     mentorships, erro = get_mentorships_by_aluno(aluno_id)
     if erro:

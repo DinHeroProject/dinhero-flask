@@ -3,6 +3,7 @@ annotated-types==0.7.0
 anyio==4.9.0
 asgiref==3.8.1
 attrs==25.3.0
+bcrypt==5.0.0
 blinker==1.9.0
 cachetools==5.5.2
 certifi==2025.4.26
@@ -13,7 +14,9 @@ colorama==0.4.6
 Django==5.2
 dotenv==0.9.9
 Flask==3.1.1
+Flask-Bcrypt==1.0.1
 flask-cors==6.0.1
+Flask-JWT-Extended==4.7.1
 flask-restplus==0.13.0
 google-ai-generativelanguage==0.6.15
 google-api-core==2.25.0rc0
@@ -48,6 +51,7 @@ PyAutoGUI==0.9.54
 pydantic==2.11.4
 pydantic_core==2.33.2
 PyGetWindow==0.0.9
+PyJWT==2.10.1
 PyMsgBox==1.0.9
 pyparsing==3.2.3
 pyperclip==1.9.0

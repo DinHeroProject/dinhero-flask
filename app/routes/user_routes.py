@@ -1,15 +1,18 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 from app.services.user_service import *
 from app.utils.errors import errors
 
 user_routes = Blueprint('user_routes', __name__)
 
 @user_routes.route('/users', methods=['GET'])
+@jwt_required()
 def get_all():
     users, error = get_all_users()
     return jsonify(users), 200
 
 @user_routes.route('/users', methods=['POST'])
+@jwt_required()
 def create():
     data = request.get_json()
     user, error = create_user(data)
@@ -20,6 +23,7 @@ def create():
     return jsonify(user), 201
 
 @user_routes.route('/users/<int:user_id>', methods=['GET'])
+@jwt_required()
 def get(user_id):
     user, error = get_user_by_id(user_id)
     if error:
@@ -29,6 +33,7 @@ def get(user_id):
     return jsonify(user.to_dict()), 200
 
 @user_routes.route('/users/<int:user_id>', methods=['PUT'])
+@jwt_required()
 def update(user_id):
     data = request.get_json()
     user, error = update_user_info(user_id, data)
@@ -39,6 +44,7 @@ def update(user_id):
     return jsonify(user), 200
 
 @user_routes.route('/users/<int:user_id>', methods=['DELETE'])
+@jwt_required()
 def delete(user_id):
     user, error = delete_user(user_id)
     if error:
@@ -48,6 +54,7 @@ def delete(user_id):
     return jsonify(user), 200
 
 @user_routes.route('/users/<int:user_id>/profile', methods=['PUT'])
+@jwt_required()
 def profile_update(user_id):
     profile_data = request.get_json()
     user, error = update_profile(user_id, profile_data)
@@ -58,6 +65,7 @@ def profile_update(user_id):
     return jsonify(user), 200
 
 @user_routes.route('/users/<int:user_id>/profile', methods=['GET'])
+@jwt_required()
 def get_profile(user_id):
     profile, error = get_user_profile(user_id)
     if error:

@@ -41,10 +41,14 @@ class UserDAO:
     def get_by_id(user_id: int):
         with UserDAO.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute('SELECT id, cpf, first_name, last_name, email, password FROM users WHERE id = ?', (user_id,))
+            cursor.execute('SELECT id, cpf, first_name, last_name, email, password, created_at, updated_at, last_login FROM users WHERE id = ?', (user_id,))
             row = cursor.fetchone()
             if row:
-                return User(id=row[0], cpf=row[1], first_name=row[2], last_name=row[3], email=row[4], password=row[5])
+                user = User(id=row[0], cpf=row[1], first_name=row[2], last_name=row[3], email=row[4], password=row[5])
+                user.created_at = row[6]
+                user.updated_at = row[7]
+                user.last_login = row[8]
+                return user
             else:
                 raise ValueError('RESOURCE_NOT_FOUND')('User not found')
 
@@ -60,7 +64,7 @@ class UserDAO:
     def update(user: User):
         with UserDAO.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute('UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?', (user.first_name, user.last_name, user.email, user.id))
+            cursor.execute('UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ? WHERE id = ?', (user.first_name, user.last_name, user.email, user.password, user.id))
             conn.commit()
             if cursor.rowcount == 0:
                 raise ValueError('RESOURCE_NOT_FOUND')('User not found')
@@ -74,3 +78,18 @@ class UserDAO:
             conn.commit()
             if cursor.rowcount == 0:
                 raise ValueError('RESOURCE_NOT_FOUND')('User not found')
+            
+    @staticmethod
+    def get_by_email(email: str):
+        with UserDAO.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT id, cpf, first_name, last_name, email, password, created_at, updated_at, last_login FROM users WHERE email = ?', (email,))
+            row = cursor.fetchone()
+            if row:
+                user = User(id=row[0], cpf=row[1], first_name=row[2], last_name=row[3], email=row[4], password=row[5])
+                user.created_at = row[6]
+                user.updated_at = row[7]
+                user.last_login = row[8]
+                return user
+            else:
+                return None

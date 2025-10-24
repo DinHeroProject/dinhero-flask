@@ -52,32 +52,50 @@ def get_user_by_id(user_id):
         return user, None
     except Exception:
         return None, "USER_NOT_FOUND"
+    
+def get_user_by_email(email):
+    user = UserDAO.get_by_email(email)
+    if user:
+        return user, None
+    else:
+        return None, "USER_NOT_FOUND"
 
 def update_user_info(user_id, data):
-    users = UserDAO.get_all()
-    for user in users:
-        if user.id != user_id:
-            if user.cpf == data.get('cpf'):
-                return None, "CPF_ALREADY_EXISTS"
-            if user.email == data.get('email'):
-                return None, "EMAIL_ALREADY_EXISTS"
     try:
         user = UserDAO.get_by_id(user_id)
     except Exception:
         return None, "USER_NOT_FOUND"
     if not data:
         return None, "MISSING_REQUIRED_FIELD"
-    if len(data.get('password', '')) < 6:
+
+    users = UserDAO.get_all()
+    for other_user in users:
+        if other_user.id != user_id:
+            if 'cpf' in data and other_user.cpf == data['cpf']:
+                return None, "CPF_ALREADY_EXISTS"
+            if 'email' in data and other_user.email == data['email']:
+                return None, "EMAIL_ALREADY_EXISTS"
+
+    if 'password' in data and len(data['password']) < 6:
         return None, "INVALID_PASSWORD"
-    if '@' not in data.get('email', '') or '.' not in data.get('email', ''):
-        return None, "INVALID_EMAIL"
-    if not validate_cpf(data.get('cpf', '')):
-        return None, "INVALID_CPF"
-    user.cpf = data.get('cpf', user.cpf)
-    user.email = data.get('email', user.email)
-    user.password = data.get('password', user.password)
-    user.first_name = data.get('first_name', user.first_name)
-    user.last_name = data.get('last_name', user.last_name)
+    if 'email' in data:
+        if '@' not in data['email'] or '.' not in data['email']:
+            return None, "INVALID_EMAIL"
+    if 'cpf' in data:
+        if not validate_cpf(data['cpf']):
+            return None, "INVALID_CPF"
+
+    if 'cpf' in data:
+        user.cpf = data['cpf']
+    if 'email' in data:
+        user.email = data['email']
+    if 'password' in data:
+        user.password = data['password']
+    if 'first_name' in data:
+        user.first_name = data['first_name']
+    if 'last_name' in data:
+        user.last_name = data['last_name']
+
     user.updated_at = datetime.datetime.now().isoformat()
     updated = UserDAO.update(user)
     return updated.to_dict(), None

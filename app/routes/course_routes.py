@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 from app.services.course_service import *
 from app.utils.errors import errors
 
 course_routes = Blueprint('course_routes', __name__)
 
 @course_routes.route('/courses', methods=['POST'])
+@jwt_required()
 def create():
     data = request.json
     course, error = create_course(data)
@@ -13,6 +15,7 @@ def create():
     return jsonify(course), 201
 
 @course_routes.route('/courses/<int:course_id>', methods=['GET'])
+@jwt_required()
 def get_by_id(course_id):
     course, error = get_course_by_id(course_id)
     if error:
@@ -22,11 +25,13 @@ def get_by_id(course_id):
     return jsonify(course.to_dict()), 200
 
 @course_routes.route('/courses', methods=['GET'])
+@jwt_required()
 def get_all():
     courses, error = get_all_courses()
     return jsonify(courses), 200
 
 @course_routes.route('/courses/<int:course_id>', methods=['PUT'])
+@jwt_required()
 def update(course_id):
     data = request.json
     course, error = update_course(course_id, data)
@@ -37,6 +42,7 @@ def update(course_id):
     return jsonify(course), 200
 
 @course_routes.route('/courses/<int:course_id>', methods=['DELETE'])
+@jwt_required()
 def delete(course_id):
     course, error = delete_course(course_id)
     if error:
