@@ -22,6 +22,9 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = "dfcshvadbnjaksdniu3bf"
+app.config["JWT_VERIFY_SUB"]=False
+
+
 jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 
