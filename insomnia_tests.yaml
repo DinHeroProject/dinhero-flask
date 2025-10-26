@@ -1,0 +1,742 @@
+type: collection.insomnia.rest/5.0
+name: Dinhero
+meta:
+  id: wrk_13ef016e0f9749f396b67f15bf687523
+  created: 1750900589735
+  modified: 1750900589735
+collection:
+  - name: course
+    meta:
+      id: fld_6d2a372d3ddd457dbf087f4b6f96f067
+      created: 1750533250254
+      modified: 1750533250254
+      sortKey: -1750533250254
+    children:
+      - url: "{{ _.url }}/courses"
+        name: /courses
+        meta:
+          id: req_e8245ff4fd2e4803a624b5716288a7cc
+          created: 1750539594955
+          modified: 1760122036244
+          isPrivate: false
+          sortKey: -1750539594955
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "REITs - Fundos Imobiliários",
+            	"description": "Lorem ipsum",
+            	"category": "finance",
+            	"author_id": 9,
+            	"difficulty_level": "hard",
+            	"estimated_duration_minutes": 120,
+            	"thumbnail_url": null,
+            	"is_private": true,
+            	"number_of_modules": 0,
+            	"rating": 0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_ab84894a591847329940141803f5f602
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_619f4dd8aa2349c69057eaa1504c3413
+          - id: pair_d0be9b83fd8742ae8f49c0bc1e3dbc15
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/courses/1"
+        name: /courses/{id}
+        meta:
+          id: req_7e959579b7ea4a0d84c14ca5c8b187fb
+          created: 1750540183764
+          modified: 1760122057578
+          isPrivate: false
+          sortKey: -1750536725213.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_06f449debaf4484ca7ab0fcfbb2d146e
+          - id: pair_35aab65d0b4e4f019eecd96d9f527b73
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/courses"
+        name: /courses/
+        meta:
+          id: req_36088aaec54a4d7387f4f2ab2e1d928f
+          created: 1750540397019
+          modified: 1760122045573
+          isPrivate: false
+          sortKey: -1750538160084.25
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_f19aa9153973476baf79ea9760b03443
+          - id: pair_63f78c64e10c4195a33acf22a0735bb4
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/courses/1"
+        name: /courses/{id}
+        meta:
+          id: req_9569fed685a2430fbbd26b05d8846572
+          created: 1750540602547
+          modified: 1760122075197
+          isPrivate: false
+          sortKey: -1750535290342.75
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "Curso exemplo 3"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_f4271ca7f0bd4b9997a0a11fe4d6f1c6
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_8c073a47c9bd4e2a90c218a1c5baf1d1
+          - id: pair_f29b82b187e24c71a6baaac830f19905
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/courses/1"
+        name: /courses/{id}
+        meta:
+          id: req_7aecb32541a945ea996c9006d1c8d2fc
+          created: 1750540738150
+          modified: 1760122086380
+          isPrivate: false
+          sortKey: -1750534572907.375
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_386f76b9db244105917d49b1250e8386
+          - id: pair_a47873c5ddc04d2e855c5c2c3d8cc183
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: mentorship
+    meta:
+      id: fld_7ef1b168ce0547b79f2dd2f5063025f9
+      created: 1750533257131
+      modified: 1750541029983
+      sortKey: -1750533257131
+    children:
+      - url: "{{ _.url }}/mentorships"
+        name: /mentorships
+        meta:
+          id: req_343bec1434df4f07b2f4b365f0ccbb71
+          created: 1750541031764
+          modified: 1760121961716
+          isPrivate: false
+          sortKey: -1750541031764
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"mentor_id": 2,
+            	"aluno_id": 1,
+            	"start_time": "2025-06-21T18:25:54.346670",
+            	"end_time": "2025-06-21T18:26:15.795207",
+            	"status": "pending",
+            	"topic": "Renda Fixa e Variável",
+            	"meet_type": "video",
+            	"notes": null,
+            	"aluno_feedback": null,
+            	"mentor_feedback": null	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_b3c47b93e9f34312bb412c015eabf9bf
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_a2b63d927baa4f13a627e46e9367e980
+          - id: pair_c345a9ac39894b6b9a0bb7cfeb9d0432
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships/1"
+        name: /mentorships/{id}
+        meta:
+          id: req_0873baca0d924a5aab24f3acdf06ad87
+          created: 1750541570464
+          modified: 1760121982884
+          isPrivate: false
+          sortKey: -1750540313359.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_26243d258076438292e01ff00fd5bef4
+          - id: pair_8a12424ed910485aa3ac853efe4fb476
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships"
+        name: /mentorships
+        meta:
+          id: req_5b5f9566b40742c192d73a3f770b9f7f
+          created: 1750541606400
+          modified: 1760121973058
+          isPrivate: false
+          sortKey: -1750540672561.75
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_424b1d7f8afa4a90895a0378e5fc0079
+          - id: pair_15c0d59c3a0d443cabbef1afa4382bec
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships/1"
+        name: /mentorships/{id}
+        meta:
+          id: req_654448c60a154166a0cc18818c5732a6
+          created: 1750541653084
+          modified: 1760121996252
+          isPrivate: false
+          sortKey: -1750539954157.25
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"meet_type": "voice",
+            	"status": "confirmed"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_831aa82074ff45cb8cce07c8cd1b2443
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_ea13e7a87c5644a7951e877ab54e15c9
+          - id: pair_769212a3b8534b6fb9f1b8023941dbc2
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships/1"
+        name: /mentorships/{id}
+        meta:
+          id: req_cbc50619337b46fba1a82178b64e8d30
+          created: 1750541806864
+          modified: 1760122004366
+          isPrivate: false
+          sortKey: -1750539774556.125
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_5cf44fc26a324438ae0eb02fd90c357a
+          - id: pair_b7cc459cb67947dcbfacec118149db8b
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships/mentor/2"
+        name: /mentorships/mentor/{id}
+        meta:
+          id: req_9f4342991e9c4aeea889eb803cb08113
+          created: 1750541922727
+          modified: 1760122016746
+          isPrivate: false
+          sortKey: -1750539684755.5625
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_5ac9d867d89048e1bc8a5df94523fbd2
+          - id: pair_e5187179571a44d59b20178b3f184df0
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/mentorships/aluno/1"
+        name: /mentorships/aluno/{id}
+        meta:
+          id: req_7635bf2b67624aff97bbddd2b778b3d4
+          created: 1750541934325
+          modified: 1760122025067
+          isPrivate: false
+          sortKey: -1750539639855.2812
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_23f4014f39ef46368f70ef4ef0c51774
+          - id: pair_9c0606ff140546769d725bd36d7af940
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: user
+    meta:
+      id: fld_1956f96c5d424102b7500e27d10fb853
+      created: 1750533274333
+      modified: 1750533274333
+      sortKey: -1750533274333
+    children:
+      - url: "{{ _.url }}/users"
+        name: /users
+        meta:
+          id: req_6de3fbb78b72484b902bfab5c0b731e1
+          created: 1750533855372
+          modified: 1761335023554
+          isPrivate: false
+          sortKey: -1750533855372
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_36a0dd2a0acf4d7aacef58488876c257
+          - id: pair_725b3cec65e645a6b9eb8a060aad24be
+            name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTMzNDk5NiwianRpIjoiNTUzYzdjNDUtM2ExZi00YTg4LTg3NzctMzBiY2ZhYzcwYzcyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzYxMzM0OTk2LCJjc3JmIjoiYjY5Mjc3ODctMzE3Yy00MTkxLWIzMTEtODc2NDUyZWE4YTdjIiwiZXhwIjoxNzYxMzM1ODk2fQ.ZeU6CLZnXYELGZlUqmvLnQjvJBWDJSBJS-TFjyIm2Ek
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users"
+        name: /users
+        meta:
+          id: req_d1af727b77e14c6d924cf7adbd90269c
+          created: 1750535012933
+          modified: 1760121712520
+          isPrivate: false
+          sortKey: -1750533855472
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "cpf": "875.772.265-05",
+                "email": "juliana.barbosa@dinhero.com",
+            		"password": "jbarbosa@123",
+                "first_name": "Juliana",
+                "last_name": "Barbosa"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_727be4e41bcf4b64b69eb95c67c6fd91
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_bdb5956a7ffb4d13ac8891f06df66ac6
+          - id: pair_e935a011b36a463b8b067d1d0aaf5027
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users/1"
+        name: /users/{id}
+        meta:
+          id: req_a5cc513f4e094dfa89ccde319b9ccff2
+          created: 1750537297611
+          modified: 1761334970833
+          isPrivate: false
+          sortKey: -1750533424399.5
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_8e80eab527fe4ee1ab5ca9f018eab2a5
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_02d93627fac44247be33532682536bd4
+          - id: pair_1f7f29547b8344fe8876ca97a7dfc108
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users/9"
+        name: /users/{id}
+        meta:
+          id: req_7ee1460e0845419eb73ec84b3fa8bbd4
+          created: 1750537425602
+          modified: 1760121735889
+          isPrivate: false
+          sortKey: -1750533352570.75
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            		"password": "$2b$12$V8k8R/j/j7Y8pVmE7RyjuenSHx9DLdDqelhHQ56nOs9cskJMb2x3C"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_0f78c97ea0ab42da8b3290be757bf01c
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_5cca8552e3934495b5c00d0c3cc48f91
+          - id: pair_ecfef523b90540ca8950954fa6006995
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users/10"
+        name: /users/{id}
+        meta:
+          id: req_60591adc079a4927bbf9b06569e44575
+          created: 1750537517289
+          modified: 1761335154432
+          isPrivate: false
+          sortKey: -1750533316656.375
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_e8ebeaa30f4d40ccbb637b3d37b0a8ef
+          - id: pair_559c3747143e420cb3b16a6846b9f617
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users/1/profile"
+        name: /users/{id}/profile
+        meta:
+          id: req_5c00d1bd2bc74866830ac1e5bc981c06
+          created: 1750538290750
+          modified: 1760121760956
+          isPrivate: false
+          sortKey: -1750533298699.1875
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_015e267ef20f4e66a72faa2efabad8d7
+          - id: pair_c3d67f7d3f814ace80fba057059d411e
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/users/1/profile"
+        name: /users/{id}/profile
+        meta:
+          id: req_12233bfab7a84056a99f4a0d2372c30c
+          created: 1750538301941
+          modified: 1760121771897
+          isPrivate: false
+          sortKey: -1750533289720.5938
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            	{
+            		"avatar_url": "dinhero.app/cdn/avatar.png",
+            		"bio": "Lorem ipsum",
+            		"content_complexity_preference": "high",
+            		"country": "brazil",
+            		"date_of_birth": "2008-03-15",
+            		"gender": "male",
+            		"language_preference": "pt-BR",
+            		"learning_style_preference": "text",
+            		"video_length_preference": "short"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_dc5ec6da29334cdabc275900808bc926
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_2bfdc13c377846a78aa7f477f7b2ea88
+          - id: pair_f0186b47c43449d3a5efb912680dfe82
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/me"
+        name: /me
+        meta:
+          id: req_c8c680e26e704b6eb3f3fad7d75fb1d3
+          created: 1761334649937
+          modified: 1761334691199
+          isPrivate: false
+          sortKey: -1761334649938
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_9ab3fffb04294db7b20a4643a47d4f0b
+          - id: pair_d01f284f9fd84904babce17bb4ed0f43
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: auth
+    meta:
+      id: fld_0368317a914441cf8e651505854c46dd
+      created: 1760099707325
+      modified: 1760099707325
+      sortKey: -1760099707325
+    children:
+      - url: "{{ _.url }}/register"
+        name: /register
+        meta:
+          id: req_de4841c16d014f78a2da7968e0354e2b
+          created: 1760099719697
+          modified: 1761334728203
+          isPrivate: false
+          sortKey: -1760099719697
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "cpf": "234.520.506-70",
+                "email": "romario.dias@dinhero.com",
+            		"password": "diasromario@123",
+                "first_name": "Romario",
+                "last_name": "Dias"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/login"
+        name: /login
+        meta:
+          id: req_60ecb5c62bf14763bfa3133fa7284639
+          created: 1760099784353
+          modified: 1761335193088
+          isPrivate: false
+          sortKey: -1758254814816.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "romario.dias@dinhero.com",
+            	"password": "diasromario@123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/logout"
+        name: /logout
+        meta:
+          id: req_3d418be4a7dd4cf5995ea14c13a2b774
+          created: 1760099790878
+          modified: 1761335435378
+          isPrivate: false
+          sortKey: -1757332362376.25
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_89e42ed9281548418e03320027822134
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_c91c34d16b8c45289aca1845413a3793
+          - id: pair_503e65db886940ec9dd750b0c55f9c15
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_dcf2e570446b48448b70c3a0f4b066e8
+    created: 1750533226898
+    modified: 1750533226898
+environments:
+  name: Base Environment
+  meta:
+    id: env_08adad9d0ca64ae5af05d011b023e405
+    created: 1750533226895
+    modified: 1761335213760
+    isPrivate: false
+  data:
+    url: localhost:5000
+    jwt_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTMzNTE5NSwianRpIjoiMjg0NDRmNDktMjc0MS00ZWNkLWI2ZDctNWEzYTQ0YzVlODU5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTEsIm5iZiI6MTc2MTMzNTE5NSwiY3NyZiI6ImU2MGI3OWI2LWUxNjgtNGJmYS05NGEzLWZiMjM5OWQzZWZmMiIsImV4cCI6MTc2MTMzNjA5NX0.eCMYcCoV0oz-gaogTlSDx1Vr3LzISezqY4w1Jql9e84
