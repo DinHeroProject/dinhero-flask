@@ -5,7 +5,6 @@ from app.models.user import User
 DB_PATH = os.getenv('DATABASE_URL')
 
 def get_profile_dao():
-    """Importação tardia para evitar import circular"""
     from app.dao.profile_dao import ProfileDAO
     return ProfileDAO
 
@@ -54,7 +53,6 @@ class UserDAO:
                 user.updated_at = row[7]
                 user.last_login = row[8]
                 
-                # Carrega o perfil do usuário
                 ProfileDAO = get_profile_dao()
                 profile = ProfileDAO.get_by_user_id(user_id)
                 if profile:
@@ -113,7 +111,6 @@ class UserDAO:
                 user.updated_at = row[7]
                 user.last_login = row[8]
                 
-                # Carrega o perfil do usuário
                 ProfileDAO = get_profile_dao()
                 profile = ProfileDAO.get_by_user_id(user.id)
                 if profile:

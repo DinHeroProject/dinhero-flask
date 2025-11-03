@@ -34,7 +34,6 @@ class ProfileDAO:
 
     @staticmethod
     def create(user_id: int, profile_data: dict):
-        """Cria um perfil para um usuário"""
         with ProfileDAO.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute('''
@@ -60,7 +59,6 @@ class ProfileDAO:
 
     @staticmethod
     def get_by_user_id(user_id: int):
-        """Busca o perfil de um usuário"""
         with ProfileDAO.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute('''
@@ -91,17 +89,13 @@ class ProfileDAO:
 
     @staticmethod
     def update(user_id: int, profile_data: dict):
-        """Atualiza o perfil de um usuário"""
         with ProfileDAO.get_connection() as conn:
             cursor = conn.cursor()
             
-            # Verifica se o perfil existe
             existing = ProfileDAO.get_by_user_id(user_id)
             if not existing:
-                # Se não existe, cria um novo
                 return ProfileDAO.create(user_id, profile_data)
             
-            # Monta a query de atualização dinamicamente
             update_fields = []
             values = []
             
@@ -119,7 +113,6 @@ class ProfileDAO:
             if not update_fields:
                 return existing
             
-            # Adiciona o updated_at
             update_fields.append("updated_at = CURRENT_TIMESTAMP")
             values.append(user_id)
             
@@ -134,7 +127,6 @@ class ProfileDAO:
 
     @staticmethod
     def delete(user_id: int):
-        """Deleta o perfil de um usuário"""
         with ProfileDAO.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute('DELETE FROM user_profiles WHERE user_id = ?', (user_id,))
