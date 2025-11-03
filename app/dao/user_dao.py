@@ -4,6 +4,11 @@ from app.models.user import User
 
 DB_PATH = os.getenv('DATABASE_URL')
 
+def get_profile_dao():
+    """Importação tardia para evitar import circular"""
+    from app.dao.profile_dao import ProfileDAO
+    return ProfileDAO
+
 class UserDAO:
     @staticmethod
     def get_connection():
@@ -48,6 +53,23 @@ class UserDAO:
                 user.created_at = row[6]
                 user.updated_at = row[7]
                 user.last_login = row[8]
+                
+                # Carrega o perfil do usuário
+                ProfileDAO = get_profile_dao()
+                profile = ProfileDAO.get_by_user_id(user_id)
+                if profile:
+                    user.profile = {
+                        "avatar_url": profile.get('avatar_url'),
+                        "bio": profile.get('bio'),
+                        "date_of_birth": profile.get('date_of_birth'),
+                        "gender": profile.get('gender'),
+                        "country": profile.get('country'),
+                        "language_preference": profile.get('language_preference'),
+                        "learning_style_preference": profile.get('learning_style_preference'),
+                        "content_complexity_preference": profile.get('content_complexity_preference'),
+                        "video_length_preference": profile.get('video_length_preference')
+                    }
+                
                 return user
             else:
                 raise ValueError('RESOURCE_NOT_FOUND')('User not found')
@@ -90,6 +112,23 @@ class UserDAO:
                 user.created_at = row[6]
                 user.updated_at = row[7]
                 user.last_login = row[8]
+                
+                # Carrega o perfil do usuário
+                ProfileDAO = get_profile_dao()
+                profile = ProfileDAO.get_by_user_id(user.id)
+                if profile:
+                    user.profile = {
+                        "avatar_url": profile.get('avatar_url'),
+                        "bio": profile.get('bio'),
+                        "date_of_birth": profile.get('date_of_birth'),
+                        "gender": profile.get('gender'),
+                        "country": profile.get('country'),
+                        "language_preference": profile.get('language_preference'),
+                        "learning_style_preference": profile.get('learning_style_preference'),
+                        "content_complexity_preference": profile.get('content_complexity_preference'),
+                        "video_length_preference": profile.get('video_length_preference')
+                    }
+                
                 return user
             else:
                 return None

@@ -59,6 +59,13 @@ def profile_update(user_id):
     profile_data = request.get_json()
     user, error = update_profile(user_id, profile_data)
     if error:
+        # Tratamento especial para erros de validação
+        if isinstance(error, dict) and 'errors' in error:
+            return jsonify({
+                "mensagem": "Dados de perfil inválidos.",
+                "erros": error['errors']
+            }), 400
+        
         error_info = errors.get(error, {"mensagem": "Erro desconhecido", "status_code": 500})
         return jsonify({"mensagem": error_info["mensagem"]}), error_info["status_code"]
 

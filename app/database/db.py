@@ -3,6 +3,7 @@ import sqlite3
 from app.dao.mentorship_dao import MentorshipDAO
 from app.dao.user_dao import UserDAO
 from app.dao.course_dao import CourseDAO
+from app.dao.profile_dao import ProfileDAO
 
 DB_PATH = os.getenv('DATABASE_URL')
 
@@ -15,5 +16,6 @@ def init_db():
     with sqlite3.connect(DB_PATH) as conn:
         pass
     UserDAO.create_table()
+    ProfileDAO.create_table()
     CourseDAO.create_table()
     MentorshipDAO.create_table()

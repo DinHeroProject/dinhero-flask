@@ -31,5 +31,16 @@ errors = {
         "mensagem": "Recurso não encontrado.",
         "status_code": 404
     },
-
+    "INVALID_PROFILE_DATA": {
+        "mensagem": "Dados de perfil inválidos.",
+        "status_code": 400
+    },
+    "PROFILE_UPDATE_ERROR": {
+        "mensagem": "Erro ao atualizar perfil.",
+        "status_code": 500
+    },
+    "PROFILE_NOT_FOUND": {
+        "mensagem": "Perfil não encontrado.",
+        "status_code": 404
+    },
 }
