@@ -17,6 +17,7 @@ from app.routes.user_routes import user_routes
 from app.routes.course_routes import course_routes
 from app.routes.mentorship_routes import mentorship_routes
 from app.routes.auth_routes import auth_routes
+from app.routes.brain_routes import brain_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes)
 app.register_blueprint(course_routes)
 app.register_blueprint(mentorship_routes)
 app.register_blueprint(auth_routes)
+app.register_blueprint(brain_bp)
 
 
 if __name__ == '__main__':
