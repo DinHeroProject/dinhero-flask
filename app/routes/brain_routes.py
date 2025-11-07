@@ -2,10 +2,10 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services.brain_service import chat_with_brain, get_welcome_message
 
-brain_bp = Blueprint('brain', __name__)
+brain_routes = Blueprint('brain', __name__)
 
 
-@brain_bp.route('/brain/welcome', methods=['GET'])
+@brain_routes.route('/brain/welcome', methods=['GET'])
 @jwt_required()
 def welcome():
     try:
@@ -15,7 +15,7 @@ def welcome():
         return jsonify({'error': str(e)}), 500
 
 
-@brain_bp.route('/brain/chat', methods=['POST'])
+@brain_routes.route('/brain/chat', methods=['POST'])
 @jwt_required()
 def chat():
     try:

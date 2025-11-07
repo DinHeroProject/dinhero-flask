@@ -1,4 +1,3 @@
-
 type: collection.insomnia.rest/5.0
 name: Dinhero
 meta:
@@ -106,20 +105,20 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.url }}/courses/1"
+      - url: "{{ _.url }}/courses/8"
         name: /courses/{id}
         meta:
           id: req_9569fed685a2430fbbd26b05d8846572
           created: 1750540602547
-          modified: 1760122075197
+          modified: 1762194871988
           isPrivate: false
           sortKey: -1750535290342.75
         method: PUT
         body:
           mimeType: application/json
-          text: |-
+          text: >-
             {
-            	"title": "Curso exemplo 3"
+            	"description": "Com a atratividade do mercado imobiliário e a busca por **renda passiva recorrente**, investir em REITs (Real Estate Investment Trusts) – similares aos Fundos Imobiliários no Brasil – exige uma **mentalidade estratégica focada em fluxo de caixa e diversificação setorial**. Este curso foi desenhado para equipar você com a **análise, as métricas e a visão de longo prazo** essenciais para selecionar e gerenciar um portfólio de ativos imobiliários negociados em bolsa. Abordaremos desde o funcionamento tributário e legal dos REITs até as métricas específicas de avaliação e a exposição a diferentes segmentos do mercado imobiliário, transformando este investimento em uma fonte estável de renda.\n\n---\n\n## O que você vai aprender:\n\n* Dominar os **conceitos e a estrutura dos REITs**, entendendo como eles se diferenciam das ações e dos Fundos Imobiliários brasileiros (FIIs).\n* Analisar as **métricas financeiras específicas de REITs** (FFO - Funds From Operations e AFFO - Adjusted Funds From Operations) para avaliar a geração de caixa real.\n* Diferenciar e selecionar REITs com base em **segmentos do mercado imobiliário** (escritórios, logística, varejo, data centers, saúde) e sua exposição geográfica.\n* Criar uma **estratégia de diversificação** utilizando REITs para obter renda em dólar e proteger o capital contra a inflação.\n* Entender a **legislação e a tributação** aplicável aos REITs para investidores estrangeiros e otimizar a rentabilidade líquida.\n* Aplicar uma **análise de dividendos** focada na sustentabilidade e no histórico de crescimento dos pagamentos de renda.\n\n## Para quem é este curso?\n\nEste curso é ideal para investidores que já possuem familiaridade com Renda Variável e FIIs, mas desejam diversificar sua exposição imobiliária globalmente e obter renda em moeda forte. É especialmente indicado para aqueles que buscam uma fonte consistente de renda passiva (dividendos mensais ou trimestrais) com alta liquidez e que querem aplicar uma **mentalidade estratégica** focada em ativos reais, sem a burocracia da compra direta de imóveis no exterior.\n\n---\n\n**Ao final deste treinamento, você não apenas entenderá a fundo o universo dos REITs, mas terá a \"mentalidade estratégica\" necessária para construir um portfólio imobiliário internacional sólido, maximizando a renda passiva e a proteção patrimonial de forma eficiente.**"
             }
         headers:
           - name: Content-Type
@@ -387,7 +386,7 @@ collection:
         meta:
           id: req_6de3fbb78b72484b902bfab5c0b731e1
           created: 1750533855372
-          modified: 1761335023554
+          modified: 1761938394441
           isPrivate: false
           sortKey: -1750533855372
         method: GET
@@ -397,8 +396,7 @@ collection:
             id: pair_36a0dd2a0acf4d7aacef58488876c257
           - id: pair_725b3cec65e645a6b9eb8a060aad24be
             name: Authorization
-            value: Bearer
-              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTMzNDk5NiwianRpIjoiNTUzYzdjNDUtM2ExZi00YTg4LTg3NzctMzBiY2ZhYzcwYzcyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzYxMzM0OTk2LCJjc3JmIjoiYjY5Mjc3ODctMzE3Yy00MTkxLWIzMTEtODc2NDUyZWE4YTdjIiwiZXhwIjoxNzYxMzM1ODk2fQ.ZeU6CLZnXYELGZlUqmvLnQjvJBWDJSBJS-TFjyIm2Ek
+            value: Bearer {{ _.jwt_token }}
             disabled: false
         settings:
           renderRequestBody: true
@@ -413,7 +411,7 @@ collection:
         meta:
           id: req_d1af727b77e14c6d924cf7adbd90269c
           created: 1750535012933
-          modified: 1760121712520
+          modified: 1761875303576
           isPrivate: false
           sortKey: -1750533855472
         method: POST
@@ -476,12 +474,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.url }}/users/9"
+      - url: "{{ _.url }}/users/1"
         name: /users/{id}
         meta:
           id: req_7ee1460e0845419eb73ec84b3fa8bbd4
           created: 1750537425602
-          modified: 1760121735889
+          modified: 1761938885612
           isPrivate: false
           sortKey: -1750533352570.75
         method: PUT
@@ -565,24 +563,16 @@ collection:
         meta:
           id: req_12233bfab7a84056a99f4a0d2372c30c
           created: 1750538301941
-          modified: 1760121771897
+          modified: 1762183105421
           isPrivate: false
           sortKey: -1750533289720.5938
         method: PUT
         body:
           mimeType: application/json
-          text: |-
-            	{
-            		"avatar_url": "dinhero.app/cdn/avatar.png",
-            		"bio": "Lorem ipsum",
-            		"content_complexity_preference": "high",
-            		"country": "brazil",
-            		"date_of_birth": "2008-03-15",
-            		"gender": "male",
-            		"language_preference": "pt-BR",
-            		"learning_style_preference": "text",
-            		"video_length_preference": "short"
-            	}
+          text: >-
+            {
+            	"avatar_url": "https://www.rbsdirect.com.br/filestore/7/6/9/6/8/0/5_c4666e1d14e7728/5086967_5e83615ed02d3a3.jpg"
+            }
         headers:
           - name: Content-Type
             value: application/json
@@ -725,6 +715,71 @@ collection:
             send: true
             store: true
           rebuildPath: true
+  - name: brain
+    meta:
+      id: fld_8473d7c5013f466f8151988435d29def
+      created: 1762518751002
+      modified: 1762518751002
+      sortKey: -1762518751002
+    children:
+      - url: "{{ _.url }}/brain/welcome"
+        name: /welcome
+        meta:
+          id: req_a5510d4b8ba64eb98a084af30c11e093
+          created: 1762518760714
+          modified: 1762518885646
+          isPrivate: false
+          sortKey: -1762518779413
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_db6c6420dc514521a321b1e137e283b8
+          - id: pair_a93b4091a6cf44299498398425fc84ce
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/brain/chat"
+        name: /chat
+        meta:
+          id: req_2e3e99b694ae49fdbce5f2b6485e0037
+          created: 1762518899355
+          modified: 1762518935969
+          isPrivate: false
+          sortKey: -1761926714675.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"message": "O que é CDB?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_db6c6420dc514521a321b1e137e283b8
+          - id: pair_a93b4091a6cf44299498398425fc84ce
+            name: Authorization
+            value: Bearer {{ _.jwt_token }}
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
@@ -736,8 +791,8 @@ environments:
   meta:
     id: env_08adad9d0ca64ae5af05d011b023e405
     created: 1750533226895
-    modified: 1761335213760
+    modified: 1762518835327
     isPrivate: false
   data:
     url: localhost:5000
-    jwt_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTMzNTE5NSwianRpIjoiMjg0NDRmNDktMjc0MS00ZWNkLWI2ZDctNWEzYTQ0YzVlODU5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTEsIm5iZiI6MTc2MTMzNTE5NSwiY3NyZiI6ImU2MGI3OWI2LWUxNjgtNGJmYS05NGEzLWZiMjM5OWQzZWZmMiIsImV4cCI6MTc2MTMzNjA5NX0.eCMYcCoV0oz-gaogTlSDx1Vr3LzISezqY4w1Jql9e84
+    jwt_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MjUxODgxOSwianRpIjoiZDc1NjFjZjYtYWJmMi00Mzk0LWI1MDctNjRjODJmODMxNjQ2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTEsIm5iZiI6MTc2MjUxODgxOSwiY3NyZiI6ImM3ZDJjOWU1LTEwYjItNDFkNy1hZDhlLWY1M2Q4ZjAwNTU5OCIsImV4cCI6MTc2MjUxOTcxOX0.wrjJASqz8u2y179V0U-MTKjhAz8bUKAW6JIbNPk_ZTg
