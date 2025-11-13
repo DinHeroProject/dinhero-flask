@@ -22,7 +22,7 @@ from app.routes.brain_routes import brain_routes
 app = Flask(__name__)
 CORS(app)
 
-app.config["JWT_SECRET_KEY"] = "dfcshvadbnjaksdniu3bf"
+app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
 app.config["JWT_VERIFY_SUB"]=False
 
 
