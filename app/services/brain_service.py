@@ -7,6 +7,9 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
+MAX_OUTPUT_TOKENS = int(os.getenv('BRAIN_MAX_TOKENS', 512)) 
+MAX_HISTORY_MESSAGES = int(os.getenv('BRAIN_MAX_HISTORY', 6))
+
 SYSTEM_PROMPT = """Você é a Brain, uma assistente virtual especializada em educação financeira da plataforma Dinhero. 
 Seu objetivo é ajudar os usuários com dúvidas sobre:
 - Conteúdos dos cursos da plataforma
@@ -16,6 +19,7 @@ Seu objetivo é ajudar os usuários com dúvidas sobre:
 - Controle financeiro e orçamento
 
 Seja sempre educada, clara e objetiva. Use uma linguagem acessível e exemplos práticos quando possível.
+IMPORTANTE: Mantenha suas respostas concisas e diretas, sem ser prolixo.
 Se a pergunta não for relacionada a finanças, gentilmente redirecione o usuário para tópicos financeiros."""
 
 
@@ -33,13 +37,16 @@ def chat_with_brain(message: str, conversation_history: list = None):
         ))
         
         if conversation_history:
-            for item in conversation_history:
+            limited_history = conversation_history[-MAX_HISTORY_MESSAGES:] if len(conversation_history) > MAX_HISTORY_MESSAGES else conversation_history
+            
+            for item in limited_history:
                 role = 'user' if item['role'] == 'user' else 'model'
                 contents.append(types.Content(
                     role=role,
                     parts=[types.Part(text=item['content'])]
                 ))
         
+        # Adiciona a mensagem atual
         contents.append(types.Content(
             role='user',
             parts=[types.Part(text=message)]
@@ -51,7 +58,7 @@ def chat_with_brain(message: str, conversation_history: list = None):
             config=types.GenerateContentConfig(
                 temperature=0.7,
                 top_p=0.95,
-                max_output_tokens=1024,
+                max_output_tokens=MAX_OUTPUT_TOKENS, 
             )
         )
         
