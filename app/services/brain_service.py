@@ -7,8 +7,8 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
-MAX_OUTPUT_TOKENS = int(os.getenv('BRAIN_MAX_TOKENS', 512)) 
-MAX_HISTORY_MESSAGES = int(os.getenv('BRAIN_MAX_HISTORY', 6))
+MAX_OUTPUT_TOKENS = int(os.getenv('BRAIN_MAX_TOKENS', 1024)) 
+MAX_HISTORY_MESSAGES = int(os.getenv('BRAIN_MAX_HISTORY', 8))
 
 SYSTEM_PROMPT = """Você é a Brain, uma assistente virtual especializada em educação financeira da plataforma Dinhero. 
 Seu objetivo é ajudar os usuários com dúvidas sobre:
@@ -53,7 +53,7 @@ def chat_with_brain(message: str, conversation_history: list = None):
         ))
         
         response = client.models.generate_content(
-            model='gemini-2.0-flash-exp',
+            model='gemini-2.5-flash-lite',
             contents=contents,
             config=types.GenerateContentConfig(
                 temperature=0.7,
@@ -65,10 +65,11 @@ def chat_with_brain(message: str, conversation_history: list = None):
         return {
             'success': True,
             'response': response.text,
-            'model': 'gemini-2.0-flash-exp'
+            'model': 'gemini-2.5-flash-lite'
         }
         
     except Exception as e:
+        print(e)
         return {
             'success': False,
             'error': str(e),
